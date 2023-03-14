@@ -10,7 +10,7 @@ Pet-project Telegram Bot for Shop
 ### Contributors & Mentors: @klymenok and @acman
 # Description
 #### This is the Pet-Project Telegram Bot Repository of the "Python Developer" course from robot_dream, student Nikita Tsivinsky.
-[![](https://s18955.pcdn.co/wp-content/uploads/2018/02/github.png)](https://github.com/user/repository/subscription)
+[![](https://raw.githubusercontent.com/AngelOfDeath-UA/angelofdeath-ua.github.io/main/img/button.png)](https://github.com/user/repository/subscription)
 
 
 
