@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="no-js lt-ie9 lt-ie8">
+<html class="no-js lt-ie9">
+<html class="no-js">
+
+
+<head>
+	<meta charset="utf-8">
+	<title>Telegram Bot</title>
+	<meta name="description" content="">
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet'>
+
+	<!-- Syntax Highlighter -->
+	<link rel="stylesheet" type="text/css" href="syntax-highlighter/styles/shCore.css" media="all">
+	<link rel="stylesheet" type="text/css" href="syntax-highlighter/styles/shThemeDefault.css" media="all">
+
+	<!-- Font Awesome CSS-->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<!-- Normalize/Reset CSS-->
+	<link rel="stylesheet" href="css/normalize.min.css">
+	<!-- Main CSS-->
+	<link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body id="welcome-main">
+
+	<aside class="left-sidebar">
+		<div class="logo">
+			<a href="https://t.me/nike_shop_delivery_bot">
+				<img src="img/button.png" alt="" >
+			</a>
+		</div>
+		<nav class="left-nav">
+			<ul id="nav">
+				<li class="current"><a href="#welcome-main">Введение</a></li>
+				<li><a href="#functions">Функции</a></li>
+				<li><a href="#structure">Структура</a></li>
+				<li><a href="#data-base">База данных</a></li>
+				<li><a href="#end">Завершение</a></li>
+			</ul>
+		</nav>
+	</aside>
+
+	<div id="main-wrapper">
+		<div class="main-content">
+			<section id="welcome">
+				<div class="content-header">
+					<p><img src="img/rd3.png" alt=""></p>
+				</div>
+				<div class="welcome">
+					<div class="content-header">
+						<h1>Введение</h1>
+					</div>
+					<h2 class="twenty">Добро пожаловать в мой Пет проект "Telegram Bot for Shop"! </h2>
+					<p>Прежде всего я бы хотел поблагодарить моих лучших менторов от школы <code><a href="https://robotdreams.cc/uk">robot_dreams</a></code>:</p>
+					<p><code><a href="https://github.com/klymenok">Олексея Клименока</a></code></p>
+					<p><code><a href="https://github.com/acman">Виталия Гребенникова</a></code></p>
+					<p>Этот пет-проект, в будущем, станет неотъемлемой частью моего сайта <strong>Nike-Shop</strong>, и в будущем будет использовать ту-же Базу данных что и основной проект.</p>
+					<p>Главной задачей моего бота будет: "Облегчить пользователю трекинг посылок на своем аккаунте", это будет достаточно удобно ведь в Базе данных пользователя
+					будет храниться его ТТН от Новой почты, и в несколько кликов пользователь сможет узнать о валидном статусе своей посылки.</p>
+				</div>
+			</section>
+
+			<section id="functions">
+				<div class="content-header">
+					<h1>Функции Телеграм Бота</h1>
+				</div>
+				<div class="features">
+					<h2 class="twenty">Функции</h2>
+
+					<ul>
+						<li>Информация об аккаунте</li>
+						<li>Список заказов</li>
+						<li>Трекинг посылки</li>
+						<ul>
+						<li>Статус посылки</li>
+						<li>ТТН посылки</li>
+						<li>Контактные данные</li>
+					</ul>
+						<li>Может быть - дополнительные функции в процессе разработки (к примеру оплата посылки)</li>
+					</ul>
+				</div>
+
+			</section>
+			<section id="structure">
+				<div class="content-header">
+					<h1>Структура Телеграм Бота</h1>
+				</div>
+				<p class="fifteen">Предварительно - я буду использовать <strong>PostgreSQL</strong> с валидными данными
+					которые указали пользователи при регистрации на сайте и автоматически сформированным заказом.</p>
+				<p class="fifteen">Для выполнения бэкенда Телеграм Бота скорее всего я буду использовать библиотеку
+					<strong>pytelegrambotapi</strong> - ввиду ее простоты и динамичности.</p>
+				<p class="fifteen">Для выполнения запросов Трекинга Посылок - воспользуюсь <strong>NovaPoshta
+					Api</strong>, методом <strong>getStatusDocuments</strong> - ввиду своей универсальности и удобству.
+				</p>
+				<p class="fifteen">Тело запроса для метода <strong>getStatusDocuments</strong> в <strong>JSON</strong>:</p>
+				<pre class="brush: html">
+					{
+   						"apiKey": "[ВАШ КЛЮЧ]",
+						"modelName": "TrackingDocument",
+						"calledMethod": "getStatusDocuments",
+						"methodProperties": {
+							"Documents" : [
+								{
+									"DocumentNumber":"20400048799000",
+									"Phone":"380600000000"
+								}
+							,
+								{
+									"DocumentNumber":"20400048799001",
+									"Phone":"380600000000"
+								}
+							]
+						}
+					}
+				</pre>
+			</section>
+			<section id="data-base">
+				<div class="content-header">
+					<h1>Структура Базы Данных</h1>
+				</div>
+				<p class="fifteen">На основе моих разработок Базы Данных для <strong>Nike-Shop</strong> - попробую создать Телеграм бота
+					который бы легко мог пользоваться полями для получения нужной информации.</p>
+				<embed src="pdf/nike_shop-ER.pdf" width="1000" height="600" />
+				<div class="features">
+					<h2 class="twenty">Предварительно необходимые таблицы</h2>
+
+					<ul>
+						<li><strong>Order</strong> (нужно добавить поле с ТТН)</li>
+						<li><strong>User</strong></li>
+						<li><strong>Order_Items</strong> </li>
+						<li><strong>Items</strong> (Может не понадобится) </li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="end">
+				<div class="content-header">
+					<h1>Завершение</h1>
+				</div>
+				<p class="fifteen">Надеюсь что данный проект станет отличным резултатом моего прохождения курсов от школы <strong>robot_dreams</strong>.
+				<div class="end-button">
+			<a href="https://t.me/nike_shop_delivery_bot">
+				<img src="img/button.png" alt="" >
+			</a>
+		</div>
+			</section>
+		</div>
+	</div>
+
+
+	<!-- Essential JavaScript Libraries
+	==============================================-->
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.nav.js"></script>
+	<script type="text/javascript" src="syntax-highlighter/scripts/shCore.js"></script>
+	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushXml.js"></script>
+	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushCss.js"></script>
+	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushPhp.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.all()
+	</script>
+	<script type="text/javascript" src="js/custom.js"></script>
+
+</body>
+
+</html>

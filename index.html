@@ -1,172 +1,483 @@
 <!DOCTYPE html>
-
-<html class="no-js lt-ie9 lt-ie8">
-<html class="no-js lt-ie9">
-<html class="no-js">
-
-
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Telegram Bot</title>
-	<meta name="description" content="">
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet'>
+    <title>Nikita Tsivinsky - CV</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="css/normalize.css" rel="stylesheet" type="text/css"  />
+    <link href="css/animations.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" >     
+	<link href="css/magnific-popup.css" rel="stylesheet" >
 
-	<!-- Syntax Highlighter -->
-	<link rel="stylesheet" type="text/css" href="syntax-highlighter/styles/shCore.css" media="all">
-	<link rel="stylesheet" type="text/css" href="syntax-highlighter/styles/shThemeDefault.css" media="all">
 
-	<!-- Font Awesome CSS-->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<!-- Normalize/Reset CSS-->
-	<link rel="stylesheet" href="css/normalize.min.css">
-	<!-- Main CSS-->
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-</head>
-
-<body id="welcome-main">
-
-	<aside class="left-sidebar">
-		<div class="logo">
-			<a href="https://t.me/nike_shop_delivery_bot">
-				<img src="img/button.png" alt="" >
-			</a>
-		</div>
-		<nav class="left-nav">
-			<ul id="nav">
-				<li class="current"><a href="#welcome-main">Введение</a></li>
-				<li><a href="#functions">Функции</a></li>
-				<li><a href="#structure">Структура</a></li>
-				<li><a href="#data-base">База данных</a></li>
-				<li><a href="#end">Завершение</a></li>
-			</ul>
-		</nav>
-	</aside>
-
-	<div id="main-wrapper">
-		<div class="main-content">
-			<section id="welcome">
-				<div class="content-header">
-					<p><img src="img/rd3.png" alt=""></p>
-				</div>
-				<div class="welcome">
-					<div class="content-header">
-						<h1>Введение</h1>
-					</div>
-					<h2 class="twenty">Добро пожаловать в мой Пет проект "Telegram Bot for Shop"! </h2>
-					<p>Прежде всего я бы хотел поблагодарить моих лучших менторов от школы <code><a href="https://robotdreams.cc/uk">robot_dreams</a></code>:</p>
-					<p><code><a href="https://github.com/klymenok">Олексея Клименока</a></code></p>
-					<p><code><a href="https://github.com/acman">Виталия Гребенникова</a></code></p>
-					<p>Этот пет-проект, в будущем, станет неотъемлемой частью моего сайта <strong>Nike-Shop</strong>, и в будущем будет использовать ту-же Базу данных что и основной проект.</p>
-					<p>Главной задачей моего бота будет: "Облегчить пользователю трекинг посылок на своем аккаунте", это будет достаточно удобно ведь в Базе данных пользователя
-					будет храниться его ТТН от Новой почты, и в несколько кликов пользователь сможет узнать о валидном статусе своей посылки.</p>
-				</div>
-			</section>
-
-			<section id="functions">
-				<div class="content-header">
-					<h1>Функции Телеграм Бота</h1>
-				</div>
-				<div class="features">
-					<h2 class="twenty">Функции</h2>
-
-					<ul>
-						<li>Информация об аккаунте</li>
-						<li>Список заказов</li>
-						<li>Трекинг посылки</li>
-						<ul>
-						<li>Статус посылки</li>
-						<li>ТТН посылки</li>
-						<li>Контактные данные</li>
-					</ul>
-						<li>Может быть - дополнительные функции в процессе разработки (к примеру оплата посылки)</li>
-					</ul>
-				</div>
-
-			</section>
-			<section id="structure">
-				<div class="content-header">
-					<h1>Структура Телеграм Бота</h1>
-				</div>
-				<p class="fifteen">Предварительно - я буду использовать <strong>PostgreSQL</strong> с валидными данными
-					которые указали пользователи при регистрации на сайте и автоматически сформированным заказом.</p>
-				<p class="fifteen">Для выполнения бэкенда Телеграм Бота скорее всего я буду использовать библиотеку
-					<strong>pytelegrambotapi</strong> - ввиду ее простоты и динамичности.</p>
-				<p class="fifteen">Для выполнения запросов Трекинга Посылок - воспользуюсь <strong>NovaPoshta
-					Api</strong>, методом <strong>getStatusDocuments</strong> - ввиду своей универсальности и удобству.
-				</p>
-				<p class="fifteen">Тело запроса для метода <strong>getStatusDocuments</strong> в <strong>JSON</strong>:</p>
-				<pre class="brush: html">
-					{
-   						"apiKey": "[ВАШ КЛЮЧ]",
-						"modelName": "TrackingDocument",
-						"calledMethod": "getStatusDocuments",
-						"methodProperties": {
-							"Documents" : [
-								{
-									"DocumentNumber":"20400048799000",
-									"Phone":"380600000000"
-								}
-							,
-								{
-									"DocumentNumber":"20400048799001",
-									"Phone":"380600000000"
-								}
-							]
-						}
-					}
-				</pre>
-			</section>
-			<section id="data-base">
-				<div class="content-header">
-					<h1>Структура Базы Данных</h1>
-				</div>
-				<p class="fifteen">На основе моих разработок Базы Данных для <strong>Nike-Shop</strong> - попробую создать Телеграм бота
-					который бы легко мог пользоваться полями для получения нужной информации.</p>
-				<embed src="pdf/nike_shop-ER.pdf" width="1000" height="600" />
-				<div class="features">
-					<h2 class="twenty">Предварительно необходимые таблицы</h2>
-
-					<ul>
-						<li><strong>Order</strong> (нужно добавить поле с ТТН)</li>
-						<li><strong>User</strong></li>
-						<li><strong>Order_Items</strong> </li>
-						<li><strong>Items</strong> (Может не понадобится) </li>
-					</ul>
-				</div>
-			</section>
-
-			<section id="end">
-				<div class="content-header">
-					<h1>Завершение</h1>
-				</div>
-				<p class="fifteen">Надеюсь что данный проект станет отличным резултатом моего прохождения курсов от школы <strong>robot_dreams</strong>.
-				<div class="end-button">
-			<a href="https://t.me/nike_shop_delivery_bot">
-				<img src="img/button.png" alt="" >
-			</a>
-		</div>
-			</section>
-		</div>
+	</head>
+<body class="body-wrapper render">
+	<div id="loading">
+		<img id="loading-image" src="img/loader.gif" alt="Loading..." />
 	</div>
+    <div id="main-container">
+        <header>
+            <div class="logo">
+                <a href="index.html"><img src="img/logo.png" alt="logo"></a>
+            </div>
+            <div class="hamburger js-hover">
+                <div class="hamburger__line hamburger__line--01">
+                    <div class="hamburger__line-in hamburger__line-in--01"></div>
+                </div>
+                <div class="hamburger__line hamburger__line--02">
+                    <div class="hamburger__line-in hamburger__line-in--02"></div>
+                </div>
+                <div class="hamburger__line hamburger__line--03">
+                    <div class="hamburger__line-in hamburger__line-in--03"></div>
+                </div>
+                <div class="hamburger__line hamburger__line--cross01">
+                    <div class="hamburger__line-in hamburger__line-in--cross01"></div>
+                </div>
+                <div class="hamburger__line hamburger__line--cross02">
+                    <div class="hamburger__line-in hamburger__line-in--cross02"></div>
+                </div>
+            </div>
+            <div class="global-menu">
+                <div class="global-menu__wrap" role="menu">
+                    <a class="global-menu__item global-menu__item--transition" data-num-id="0" href="#home">Home</a>
+                    <a class="global-menu__item global-menu__item--transition" data-num-id="1" href="#profile">Profile</a>
+                    <a class="global-menu__item global-menu__item--transition" data-num-id="2" href="#resume">Resume</a>
+                    <a class="global-menu__item global-menu__item--transition" data-num-id="3" href="#services">Stack</a>
+                    <a class="global-menu__item global-menu__item--transition" data-num-id="4" href="#portfolio">Projects</a>
+                    <a class="global-menu__item global-menu__item--transition" data-num-id="5" href="#contact">Contact</a>
+                </div>
+            </div>
+        </header>
+        <div id="content-container" class="content-container height-one">
+            <div id="pages-container" class="pages-container pages-perspective">
+                <div id="home-page" class="page-container">
+					<div id="particles-js"></div>
+                    <div class="container">
+                        <div class="sub-section">
+                            <div class="home_title">
+                                <h1>Nikita Tsivinsky</h1>
+								<div id="subtitle"></div>
+                            </div>
 
-
-	<!-- Essential JavaScript Libraries
-	==============================================-->
-	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/jquery.nav.js"></script>
-	<script type="text/javascript" src="syntax-highlighter/scripts/shCore.js"></script>
-	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushXml.js"></script>
-	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushCss.js"></script>
-	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushJScript.js"></script>
-	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushPhp.js"></script>
-	<script type="text/javascript">
-		SyntaxHighlighter.all()
-	</script>
-	<script type="text/javascript" src="js/custom.js"></script>
-
+							<div class="icon-block">
+							  <i class="fab fa-python"></i>
+							  <i class="fab fa-css3"></i>
+							  <i class="fab fa-html5"></i>
+							  <i class="fab fa-js-square"></i>
+							</div>
+						</div>
+                    </div>
+                </div>
+                <div id="profile-page" class="page-container">
+                    <div class="container">
+                        <div class="page_title text-center">
+                            <h2 class="page-title">PROFILE</h2>
+                        </div>
+                        <div class="sub-section">
+                            <div class="row">
+								<div class="col-xs-12 col-md-4">
+                                    <img src="img/profile.jpg" class="profile-image" alt="Profile">
+                                </div>
+                                <div class="col-xs-12 col-md-8">
+									<div class="col-xs-12">
+										<h1>Nikita Tsivinsky</h1>
+										<p><strong>Python Web Developer</strong></p>
+										<p style="text-align: justify;">My name is Nikita, and I'm an IT-switcher with a focus on Python backend development. I've gained hands-on experience and study with essential tools like Django, Flask, Docker, HTML, CSS, NGINX,NGROK, etc. I can create robust web applications with Django or Flask and streamline the development process with Docker. Additionally, I have a keen eye for aesthetics and functionality, and I'm  always up-to-date with the latest trends and best practices. I'm want to continue learning and growing in this fast-paced field.</p>
+									</div>
+									<div class="col-xs-12 col-md-6">
+                                    	<ul class="profile-data">
+											<li>
+												<div class="profile-icon"><i class="fa fa-phone"></i></div>
+												<div class="profile-intro"><b>Phone: </b><a href="tel:+380635776793">+38 (063) 577 67 93</a></div>
+											</li>
+											<li>
+												<div class="profile-icon"><i class="fa fa-envelope-open"></i></div>
+												<div class="profile-intro"><b>Email: </b><a href="mailto:nikitatsivinsky@gmail.com">nikitatsivinsky@gmail.com</a></div>
+											</li>
+											<li>
+												<div class="profile-icon"><i class="fa fa-telegram"></i></div>
+												<div class="profile-intro"><b><a href="https://t.me/nitsiv">@Nitsiv</a></b></div>
+											</li>
+											<li>
+												<div class="profile-icon"><i class="fa fa-linkedin-square"></i></div>
+												<div class="profile-intro"><b><a href="www.linkedin.com/in/nikita-tsivinsky/">linkedin.com/in/nikita-tsivinsky</a></b></div>
+											</li>
+										</ul>
+									</div>
+									<div class="col-xs-12 col-md-6">
+                                    	<ul class="profile-data">
+											<li>
+												<div class="profile-icon"><i class="fa fa-calendar"></i></div>
+												<div class="profile-intro"><b>Birthday: </b>February 20, 1997</div>
+											</li>
+											<li>
+												<div class="profile-icon"><i class="fa fa-home"></i></div>
+												<div class="profile-intro"><b>Address: </b>Ukraine, Kharkov</div>
+											</li>
+											<li>
+												<div class="profile-icon"><i class="fa fa-github-square"></i></div>
+												<div class="profile-intro"><b><a href="https://github.com/AngelOfDeath-UA">github.com/AngelOfDeath-UA</a></b></div>
+											</li>
+											<li>
+												<div class="profile-icon"><i class="fa fa-skype"></i></div>
+												<div class="profile-intro"><b><a href="https://join.skype.com/invite/cfw2HjMthvqO">Nikitatsivinsky</a></b></div>
+											</li>
+										</ul>
+									</div>
+									<div class="col-xs-12 col-md-6">
+										<a class="cv-btn" href="#"><i class="fa fa-download"></i> Download My CV</a>
+									</div>
+									<div class="col-xs-12 col-md-6">
+										<a class="cv-btn" href="mailto:nikitatsivinsky@gmail.com"><i class="fa fa-handshake-o"></i> Hire Me Now</a>
+									</div>
+                                </div>
+                            </div>
+						</div>
+                    </div>
+                </div>
+                <div id="resume-page" class="page-container">
+                    <div class="container">
+                        <div class="page_title text-center">
+                            <h2 class="page-title">RESUME</h2>
+                        </div>
+						<div class="sub-section">
+							<h3 class="section-title text-center">EDUCATION</h3>
+							<div class="resume-details">
+								<div class="row">
+									<div class="item">
+										<div class="col-sm-6">
+											<div class="box">
+												2022 Dec - 2023 Apr
+												<div class="box-sub-title">
+													Udemy:"Backend development with Django"
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="box_dec">
+											<h3>Django Web Developer</h3>
+												<p class="description">In course, we learned how create powerful and scalable web applications by developing server-side logic and functionality, integrating databases, implementing authentication, developing APIs and applications.</p>
+											</div>
+										</div>
+									</div>
+									<div class="item">
+										<div class="col-sm-6">
+											<div class="box">
+												2022 Nov - 2023 May
+												<div class="box-sub-title">
+													Robot_Dreams (Laba): "Python Developer"
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="box_dec">
+											<h3>Python Developer</h3>
+												<p class="description">In the "Python Developer" course, we learned the fundamentals of Python programming, including data types, control flow, functions, modules, and object-oriented programming. We gained practical experience building applications using Flask and Django, working with databases, APIs, and testing frameworks.</p>
+											</div>
+										</div>
+									</div>
+									<div class="item">
+										<div class="col-sm-6">
+											<div class="box">
+												2023 Feb - 2023 Mar
+												<div class="box-sub-title">
+													Udemy:"Full Docker Course"
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="box_dec">
+											<h3>Docker</h3>
+												<p class="description">In the "Full Docker Course," we learned how to create and deploy applications using Docker containers and Docker Compose. We gained practical experience building images, managing containers, and configuring networks and volumes for efficient deployment.</p>
+											</div>
+										</div>
+									</div>
+									<div class="item">
+										<div class="col-sm-6">
+											<div class="box">
+												2022 Sep - 2022 Dec
+												<div class="box-sub-title">
+													Distributed Lab Academy: "Data Bases SQL"
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="box_dec">
+											<h3>SQL</h3>
+												<p class="description">In the "Data Bases SQL" course, we learned the fundamentals of relational databases and SQL. We gained practical experience creating tables, querying data, and managing relationships in databases such as MySQL and PostgreSQL..</p>
+											</div>
+										</div>
+									</div>
+									<div class="item">
+										<div class="col-sm-6">
+											<div class="box">
+												2022 Dec - 2023 Mar
+												<div class="box-sub-title">
+													Laba & Robot_Dreams:"English for IT"
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="box_dec">
+											<h3>English</h3>
+												<p class="description">In the "English for IT" course, we learned to communicate effectively in English in a technology context. We gained practical experience writing technical documentation, participating in meetings, and giving presentations in English.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                        <div class="sub-section">
+                            <h3 class="section-title text-center">Employment</h3>
+                            <div class="resume-details">
+                                <div class="row">
+                                    <div class="item">
+                                        <div class="col-sm-6">
+                                            <div class="box">
+                                                2015 - Present Day
+                                                <div class="box-sub-title">
+													Cultural Organizer
+                                                </div>
+                                                (Kharkov, Ukraine)
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+											<div class="box_dec">
+												<h3>Cultural Organizer</h3>
+												<ul class="description">
+													<li>Conducting city, regional, and international holidays.</li>
+													<li>Writing scripts, selecting music and thematic design.</li>
+													<li>Help children learn theatrical skills.</li>
+												</ul>
+											</div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-sm-6">
+                                            <div class="box">
+                                                2017 - Present Day
+                                                <div class="box-sub-title">
+                                                    Master of ceremonies
+                                                </div>
+                                                (Ukraine)
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+											<div class="box_dec">
+												<h3>Master of ceremonies</h3>
+												<ul class="description">
+													<li>Conducting personal celebrations (weddings, birthdays, etc.).</li>
+													<li>Writing scripts for an entertainment program and structuring a holiday.</li>
+													<li>Ordering photographers, videographers, holiday decorations, printing houses and cover bands.</li>
+												</ul>
+											</div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-sm-6">
+                                            <div class="box">
+                                                2016 - 2017
+                                                <div class="box-sub-title">
+                                                    Head of Event Managers
+                                                </div>
+                                                (Event Company)
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+											<div class="box_dec">
+                                            <h3>Head of Event Managers</h3>
+                                            <ul class="description">
+                                                <li>I was responsible for organizing and coordinating various aspects of an event, from venue selection and vendor management to guest registration and program scheduling.</li>
+                                                <li>Worked closely with clients and stakeholders to ensure that their event meets their specific goals and objectives.</li>
+                                                <li>Worked in a high-pressure environment, required to be adaptable and quick-thinking to handled unexpected challenges that may arise during the planning and execution of an event.</li>
+                                            </ul>
+											</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="services-page" class="page-container">
+                    <div class="container">
+                        <div class="page_title text-center">
+                            <h2 class="page-title">STACK</h2>
+                        </div>
+                        <div class="sub-section">
+							 <div class="row">
+								<div class="col-md-4 col-sm-6">
+									<div class="serviceBox">
+										<div class="service-icon">
+											<i class="fab fa-python"></i>
+										</div>
+										<h3 class="title">Backend</h3>
+										<p class="description">
+											I use Django and Flask application for building web applications with different requirements, using the appropriate framework depending on the project's complexity and needs.
+										</p>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="serviceBox">
+										<div class="service-icon">
+											<i class="fa fa-cube"></i>
+										</div>
+										<h3 class="title">Front End</h3>
+										<p class="description"> I know the basics of HTML, CSS, and JS which allows me to create simple and interactive web pages, and work collaboratively with Frontend developers on more complex projects.
+										</p>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="serviceBox">
+										<div class="service-icon">
+											<i class="fa fa-wrench"></i>
+										</div>
+										<h3 class="title">Tools</h3>
+										<p class="description">By utilizing NGINX, NGROK, and other related tools, I am able to proactively optimize web server performance, enhance security measures, and effectively facilitate testing and debugging of my web applications.
+										</p>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="serviceBox">
+										<div class="service-icon">
+											<i class="fa fa-rocket"></i>
+										</div>
+										<h3 class="title">Apps</h3>
+										<p class="description">I know apps like Docker to provide solutions for containerization of software applications, and Pycharm to create virtual environments, write, test, and debug code efficiently.
+										</p>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="serviceBox">
+										<div class="service-icon">
+											<i class="fa fa-database"></i>
+										</div>
+										<h3 class="title">Data Bases</h3>
+										<p class="description">I use SQL, Django ORM, SQL Alchemy, PostgreSQL, and SQLite for data management tasks such as creating and querying databases, performing data migrations, and building data-driven applications.
+										</p>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="serviceBox">
+										<div class="service-icon">
+											<i class="fas fa-layer-group"></i>
+										</div>
+										<h3 class="title">REST</h3>
+										<p class="description">I am familiar with RESTful principles and can utilize Django Rest Framework and Flask-RESTful to develop RESTful APIs that facilitate data exchange between systems and applications.
+										</p>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="portfolio-page" class="page-container">
+                    <div class="container">
+						<div class="page_title text-center">
+                            <h2 class="page-title">Projects</h2>
+                        </div>
+						<div class="sub-section">
+							<div class="row">
+								<div class="col-sm-12">
+									<ul id="filters" class="filters">
+										<li><a href="#" data-filter="*" class="current">All</a></li>
+										<li><a href="#" data-filter=".web">Web</a></li>
+										<li><a href="#" data-filter=".rest">REST</a></li>
+										<li><a href="#" data-filter=".bot">bot</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div id="portfolio-grid" class="portfolio-grid portfolio-hover-w">
+									<div class="grid-sizer"></div>
+									<div class="portfolio-item web rest">
+										<a href="/nikeshop" class="link" title="Django Nike Shop">
+											<img src="portfolio/nike_shop.jpg" alt="">
+											<div class="portfolio-caption ">
+												<h3 class="portfolio-title">Nike Shop</h3>
+												<div class="portfolio-descr">
+													Web / REST
+												</div>
+											</div>
+										</a>
+									</div>
+									<div class="portfolio-item bot rest">
+										<a class="link" href="telegram/telegrambot.html" title="Flask Telegram Bot">
+											<img src="portfolio/telegram_bot.jpg" alt="">
+											<div class="portfolio-caption ">
+												<h3 class="portfolio-title">Telegram Bot</h3>
+												<div class="portfolio-descr">
+													Bot / REST
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
+                <div id="contact-page" class="page-container">
+                    <div class="container">
+						<div class="page_title text-center">
+                            <h2 class="page-title">CONTACT</h2>
+                        </div>
+						 <div class="sub-section">
+							<div class="row">
+							<div class="contact-info text-center">
+								<div class="col-xs-12 col-sm-4 contact-box">
+									<div class="contact-icon"><i class="fa fa-phone-square"></i></div>
+									<p class="contact-title">Phone</p>
+									<span class="contact-texts"><a href="tel:0635776793">+38 (063) 577 67 93</a></span>
+								</div>
+								<div class="col-xs-12 col-sm-4 contact-box">
+									<div class="contact-icon"><i class="fa fa-envelope-square"></i></div>
+									<p class="contact-title">Email</p>
+									<span class="contact-texts"><a href="mailto:nikitatsivinsky@gmail.com">nikitatsivinsky@gmail.com</a></span>
+								</div>
+								<div class="col-xs-12 col-sm-4 contact-box">
+									<div class="contact-icon"><i class="fa fa-telegram"></i></div>
+									<p class="contact-title">Telegram</p>
+									<span class="contact-texts"><a href="https://t.me/nitsiv">@Niktsiv</a></span>
+								</div>
+							</div>
+							</div>
+						 </div>
+						<div class="sub-section">
+							<div class="row">
+								<div class="col-xs-12 text-center">
+									&copy; Nikita Tsivinsky
+								</div>
+							</div>
+						 </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <svg class="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="shape-overlays__path" d=""></path>
+            <path class="shape-overlays__path" d=""></path>
+            <path class="shape-overlays__path" d=""></path>
+        </svg>
+		<script src="https://use.fontawesome.com/9fd0d8e5bc.js"></script>
+		<script>
+			document.documentElement.className = 'js';
+		</script>
+		<script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/menu-animation.js"></script>
+		<script src="js/easings.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/modernizr.custom.js"></script>
+        <script src="js/pagetransitions.js"></script>
+		<script src="js/particles.js"></script>
+		<script src="js/home-animation.js"></script>
+		<script src="js/typed.min.js"></script>
+		<script src="js/isotope.pkgd.min.js"></script>
+		<script src="js/jquery.magnific-popup.js"></script>
+    </div>
 </body>
-
 </html>
