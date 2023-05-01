@@ -557,6 +557,24 @@ body {
   font-size: 18px;  
   text-transform: uppercase;  
 }
+.certif-btn {
+    text-align: center;
+    padding: 10px;
+    border: 3px solid #2aa266;
+    color: #2aa266;
+    display: block;
+    margin-bottom: 100px;
+	margin-top: 15px;
+}
+.certif-btn:hover {
+	background: #2aa266;
+	color: #fff;
+}
+.certif-btn i {
+    margin-right: 10px;
+}
+
+
 .cv-btn {
     text-align: center;
     padding: 10px;
@@ -689,7 +707,7 @@ body {
 }
 .resume-details .description{
 	margin-top: 10px;
-	margin-bottom: 100px;
+	margin-bottom: 10px;
 }
 .resume-details ul.description{
     padding-left: 0;
