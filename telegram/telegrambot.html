@@ -1,172 +1,651 @@
-<!DOCTYPE html>
-
-<html class="no-js lt-ie9 lt-ie8">
-<html class="no-js lt-ie9">
-<html class="no-js">
-
+<!doctype html>
+<html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<title>Telegram Bot</title>
-	<meta name="description" content="">
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet'>
-
-	<!-- Syntax Highlighter -->
-	<link rel="stylesheet" type="text/css" href="syntax-highlighter/styles/shCore.css" media="all">
-	<link rel="stylesheet" type="text/css" href="syntax-highlighter/styles/shThemeDefault.css" media="all">
-
-	<!-- Font Awesome CSS-->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<!-- Normalize/Reset CSS-->
-	<link rel="stylesheet" href="css/normalize.min.css">
-	<!-- Main CSS-->
-	<link rel="stylesheet" href="css/main.css">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot Documentation</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Montserrat:400,700&subset=latin,cyrillic'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 </head>
 
-<body id="welcome-main">
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
 
-	<aside class="left-sidebar">
-		<div class="logo">
-			<a href="https://t.me/nike_shop_delivery_bot">
-				<img src="img/button.png" alt="" >
-			</a>
-		</div>
-		<nav class="left-nav">
-			<ul id="nav">
-				<li class="current"><a href="#welcome-main">Введение</a></li>
-				<li><a href="#functions">Функции</a></li>
-				<li><a href="#structure">Структура</a></li>
-				<li><a href="#data-base">База данных</a></li>
-				<li><a href="#end">Завершение</a></li>
-			</ul>
-		</nav>
-	</aside>
+<header class="jumbotron subhead" id="overview">
+    <div class="container">
+        <h1>Telegram Bot - Documentation</h1>
+        <p>In this user guide you will find all required information to run & edit Telegram Bot</p>
+    </div>
+</header>
 
-	<div id="main-wrapper">
-		<div class="main-content">
-			<section id="welcome">
-				<div class="content-header">
-					<p><img src="img/rd3.png" alt=""></p>
-				</div>
-				<div class="welcome">
-					<div class="content-header">
-						<h1>Введение</h1>
-					</div>
-					<h2 class="twenty">Добро пожаловать в мой Пет проект "Telegram Bot for Shop"! </h2>
-					<p>Прежде всего я бы хотел поблагодарить моих лучших менторов от школы <code><a href="https://robotdreams.cc/uk">robot_dreams</a></code>:</p>
-					<p><code><a href="https://github.com/klymenok">Олексея Клименока</a></code></p>
-					<p><code><a href="https://github.com/acman">Виталия Гребенникова</a></code></p>
-					<p>Этот пет-проект, в будущем, станет неотъемлемой частью моего сайта <strong>Nike-Shop</strong>, и в будущем будет использовать ту-же Базу данных что и основной проект.</p>
-					<p>Главной задачей моего бота будет: "Облегчить пользователю трекинг посылок на своем аккаунте", это будет достаточно удобно ведь в Базе данных пользователя
-					будет храниться его ТТН от Новой почты, и в несколько кликов пользователь сможет узнать о валидном статусе своей посылки.</p>
-				</div>
-			</section>
+<div class="fixed-buttons">
+    <a href="https://github.com/Nikitatsivinsky/Telegram-Bot" target="_blank" data-tooltip="GitHub">
+        <i class="fab fa-github" style="font-size: 40px"></i>
+    </a>
+    <a href="https://telegram.org" target="_blank" data-tooltip="Telegram Link">
+        <i class="fab fa-telegram" style="font-size: 40px"></i>
+    </a>
+</div>
 
-			<section id="functions">
-				<div class="content-header">
-					<h1>Функции Телеграм Бота</h1>
-				</div>
-				<div class="features">
-					<h2 class="twenty">Функции</h2>
+<div class="container">
+    <div class="row">
+        <div class="span3 bs-docs-sidebar">
+            <ul class="nav nav-list bs-docs-sidenav">
+                <li><a href="#thanks">Introduction</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#structure">Structure</a></li>
+                <li><a href="#novaposhta">Nova Poshta</a></li>
+                <li><a href="#functions">Functions</a></li>
+                <li><a href="#database">Data Base Structure</a></li>
+                <li><a href="#sources">Sources and Credits</a></li>
+                <li><a href="#end">In the end</a></li>
+            </ul>
+        </div>
 
-					<ul>
-						<li>Информация об аккаунте</li>
-						<li>Список заказов</li>
-						<li>Трекинг посылки</li>
-						<ul>
-						<li>Статус посылки</li>
-						<li>ТТН посылки</li>
-						<li>Контактные данные</li>
-					</ul>
-						<li>Может быть - дополнительные функции в процессе разработки (к примеру оплата посылки)</li>
-					</ul>
-				</div>
+        <div class="span9">
 
-			</section>
-			<section id="structure">
-				<div class="content-header">
-					<h1>Структура Телеграм Бота</h1>
-				</div>
-				<p class="fifteen">Предварительно - я буду использовать <strong>PostgreSQL</strong> с валидными данными
-					которые указали пользователи при регистрации на сайте и автоматически сформированным заказом.</p>
-				<p class="fifteen">Для выполнения бэкенда Телеграм Бота скорее всего я буду использовать библиотеку
-					<strong>pytelegrambotapi</strong> - ввиду ее простоты и динамичности.</p>
-				<p class="fifteen">Для выполнения запросов Трекинга Посылок - воспользуюсь <strong>NovaPoshta
-					Api</strong>, методом <strong>getStatusDocuments</strong> - ввиду своей универсальности и удобству.
-				</p>
-				<p class="fifteen">Тело запроса для метода <strong>getStatusDocuments</strong> в <strong>JSON</strong>:</p>
-				<pre class="brush: html">
-					{
-   						"apiKey": "[ВАШ КЛЮЧ]",
-						"modelName": "TrackingDocument",
-						"calledMethod": "getStatusDocuments",
-						"methodProperties": {
-							"Documents" : [
-								{
-									"DocumentNumber":"20400048799000",
-									"Phone":"380600000000"
-								}
-							,
-								{
-									"DocumentNumber":"20400048799001",
-									"Phone":"380600000000"
-								}
-							]
-						}
-					}
-				</pre>
-			</section>
-			<section id="data-base">
-				<div class="content-header">
-					<h1>Структура Базы Данных</h1>
-				</div>
-				<p class="fifteen">На основе моих разработок Базы Данных для <strong>Nike-Shop</strong> - попробую создать Телеграм бота
-					который бы легко мог пользоваться полями для получения нужной информации.</p>
-				<embed src="pdf/nike_shop-ER.pdf" width="1000" height="600" />
-				<div class="features">
-					<h2 class="twenty">Предварительно необходимые таблицы</h2>
+            <section id="thanks">
+                <div class="page-header">
+                    <h1>Thank You!</h1>
+                </div>
+                <p>
+                    Many thanks to all the mentors who taught me on the course:
+                    <br><a href="https://github.com/klymenok">Oleksii Klymenok</a>
+                    <br><a href="https://github.com/acman">Vitalii Hrebennikov</a></p>
+                and the school <a href="https://robotdreams.cc/">Robot_Dreams</a> that gave impetus to become a switcher
+                in IT industry.
 
-					<ul>
-						<li><strong>Order</strong> (нужно добавить поле с ТТН)</li>
-						<li><strong>User</strong></li>
-						<li><strong>Order_Items</strong> </li>
-						<li><strong>Items</strong> (Может не понадобится) </li>
-					</ul>
-				</div>
-			</section>
+                <p> Telegram Bot is written using <b>Flask Application, NGROK</b>, <b>Postgresql</b> and <b>NovaPoshta Api</b>.
+                    <br>The code also contains AutoStart for a quick start of the Web application. The application uses
+                    the model view controller structure and OOP principles.</p>
+                <div style="text-align: center;">
+                    <br>
+                    <br>
+                    <div>
+                        <i class="fa fa-warning" style="font-size: 40px"></i>
+                        <br><strong>This Telegram Bot is part - of my <a
+                            href="https://github.com/Nikitatsivinsky/Nike_shop_Django">Pet Project - Nike Shop
+                        Django</a>.
+                        <br> User registration will take place on the website, and the Telegram Bot works with a
+                        ready-made User Database and helps users track their packages.</strong>
+                    </div>
+                </div>
+            </section>
 
-			<section id="end">
-				<div class="content-header">
-					<h1>Завершение</h1>
-				</div>
-				<p class="fifteen">Надеюсь что данный проект станет отличным резултатом моего прохождения курсов от школы <strong>robot_dreams</strong>.
-				<div class="end-button">
-			<a href="https://t.me/nike_shop_delivery_bot">
-				<img src="img/button.png" alt="" >
-			</a>
-		</div>
-			</section>
-		</div>
-	</div>
+            <section id="installation">
+                <div class="page-header">
+                    <h1>Installation</h1>
+                    <p>Follow the steps below to get started your tests of Telegram Bot:</p>
+                </div>
+                <ul class="list_desc">
+                    <li>
+                        1) Create you own <b>.env</b> file.
+                    </li>
+                    <li>
+                        You need to create your environment variables. In file <b>.env.template</b> you can see example of your
+                        <b>.env</b> file:
+                        <br> #FLASK
+                        <br> SECRET_KEY - your secret key of Flask application.
+                        <br> DEBUG - Bool value of Flask application.
+                        <br> HOST - Address of your host of Flask application (default = 0.0.0.0)
+                        <br> PORT - Address of your port of Flask application (default = 8443)
+                        <br> #AUTO START POSTGRESQL SERVER AND NGROK WITH TELEGRAM WEBHOOK (TESTED ON UBUNTU)
+                        <br> AUTO_START - Bool value Auto Start Postgres Server (you need to install Server on your
+                        operating system) and NGROK (inside app.start_postgresql_ngrok.StartNGROK you can see function
+                        "register_webhook" - this function set WebHook to Telegram API)
+                        <br> #DATABASE
+                        <br> DATABASE_URI - Database Uniform Resource Identifier
+                        <br> SQLALCHEMY_TRACK_MODIFICATIONS - Bool variable of <a
+                            href="https://flask-sqlalchemy.palletsprojects.com/en/2.x/config/">configuration keys</a>
+                        for Flask application.
+                        <br> #POSTGRESQL SERVER AUTOSTART
+                        <br> USER_PASSWORD - Password of your Operational System User (inside
+                        app.start_postgresql_ngrok.StartProcess you can see function "startprocess" which start your
+                        Postgres Server from bash. So, to start Server App use "sudo", and password needs for this.)
+                        <br> #TELEGRAM
+                        <br> TG_TOKEN - Token of your Telegram Bot.
+                        <br> #NOVA POSHTA
+                        <br> NOVA_POSHTA_API_KEY - Your personal Nova Poshta Api Key (<a
+                            href="https://new.novaposhta.ua/dashboard/invoices-my">Get it!</a>)
+                        <br> COMPANY_TELEPHONE - Your personal or your company telephone number for tracking parcels
+                        using Nova Poshta Api method getStatusDocuments.
+                        <br>
+                        <br>
+                        <br>
+                    </li>
+                    <li>
+                        2) Install and set up a server Postgres
+                    </li>
+                    <li>
+                        For Linux:
+                        <pre>    sudo apt update
+                                <br>    sudo apt upgrade
+                                <br>    sudo apt install postgresql
+                            </pre>
+                        to check your server use:
+                        <pre>    sudo service postgresql status </pre>
+                        <br>For Mac:
+                        <br>1) <a href="https://www.postgresql.org/download/macosx/">Visit the PostgreSQL downloads
+                        page</a>
+                        <br>2) Download and open the downloaded package (.dmg) file.
+                        <br>3) Follow the on-screen instructions to run the installer and complete the installation
+                        process.
+                        <br>to check your server use:
+                        <pre>    psql --version </pre>
+                        <br>For Windows:
+                        <br>1) <a href="https://www.postgresql.org/download/windows/">Visit the PostgreSQL downloads
+                        page</a>
+                        <br>2) Download and open the downloaded installer (.exe) file.
+                        <br>3) Follow the on-screen instructions to run the installer and complete the installation
+                        process. Make sure to remember the password you set for the "postgres" user during the
+                        installation.
+                        <br>to check your server use:
+                        <pre>    psql --version </pre>
+                        <br>
+                        <div style="text-align: center;">
+                            <div>
+                                <i class="fa fa-warning" style="font-size: 40px"></i>
+                                <br><strong>You can use Docker container instead installing Postgresql on your
+                                OS.</strong>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                    </li>
+                    <li>
+                        3) Install NGROK
+                    </li>
+                    <li>
+                        For all OS - on <a href="https://ngrok.com/download">Web Site</a> - download and install NGROK.
+                        <br>
+                        <br>
+                        <br>
+                    </li>
+                    <li>
+                        4) Create Python Virtual Environment and install requirements.txt
+                    </li>
+                    <li>
+                        <pre>    pip install -r requirements.txt</pre>
+                        <br>
+                        <br>
+                        <br>
+                    </li>
+                    <li>
+                        5) Run Flask Web application
+                    </li>
+                    <li>
+                        <pre>    python run.py</pre>
+                    </li>
+                </ul>
+            </section>
 
+            <section id="structure">
+                <div class="page-header">
+                    <h1>Structure of application</h1>
+                </div>
+                <p>The code uses the standard Flask application structure with two additional files located in the app
+                    folder.</p>
 
-	<!-- Essential JavaScript Libraries
-	==============================================-->
-	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="js/jquery.nav.js"></script>
-	<script type="text/javascript" src="syntax-highlighter/scripts/shCore.js"></script>
-	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushXml.js"></script>
-	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushCss.js"></script>
-	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushJScript.js"></script>
-	<script type="text/javascript" src="syntax-highlighter/scripts/shBrushPhp.js"></script>
-	<script type="text/javascript">
-		SyntaxHighlighter.all()
-	</script>
-	<script type="text/javascript" src="js/custom.js"></script>
+                <h3>Structure of files</h3>
 
+                <ul class="list_desc">
+                    <h5><strong>Telegram-Bot</strong> (Main folder of the project)</h5>
+                    <li>
+                        <span>tg_bot/</span> Folder of the Flask Application
+                    </li>
+                    <li>
+                        <span>.env.template</span> Environment file example
+                    </li>
+                    <li>
+                        <span>.gitignore</span> GitIgnore file
+                    </li>
+                    <li>
+                        <span>config.py</span> Script loading environment variables
+                    </li>
+                    <li>
+                        <span>README.md</span> GitHub ReadMe file
+                    </li>
+                    <li>
+                        <span>requirements.txt</span> List of dependencies required by the project
+                    </li>
+                    <li>
+                        <span>run.py</span> Program entry point
+                    </li>
+                </ul>
+
+                <ul class="list_desc">
+                    <h5><strong>tg_bot</strong> (Folder of the Flask Application)</h5>
+                    <li>
+                        <span>app/</span> Additional scripts (services) folder
+                    </li>
+                    <li>
+                        <span>__init__.py</span> Flask app initialization with configuration and database.
+                    </li>
+                    <li>
+                        <span>handlers.py</span> Telegram message handling with sending and interaction logic.
+                    </li>
+                    <li>
+                        <span>models.py</span> Models for SqlAlchemy ORM
+                    </li>
+                    <li>
+                        <span>views.py</span> Routes and handlers for processing incoming messages and callback queries.
+                    </li>
+                </ul>
+
+                <ul class="list_desc">
+                    <h5><strong>app</strong> (Additional scripts (services) folder)</h5>
+                    <li>
+                        <span>novaposhta.py</span> Script of Nova Poshta Api for Parcel tracking
+                    </li>
+                    <li>
+                        <span>start_postgresql_ngrok.py</span> Auto Start of Postgres Server and NGROK with setting
+                        WebHook
+                    </li>
+                </ul>
+
+            </section>
+
+            <section id="novaposhta">
+
+                <div class="page-header">
+                    <h1>Nova Poshta Api</h1>
+                </div>
+                <p>For package tracking, used the <strong>NovaPoshta API v.2</strong> due to its versatility and
+                    convenience.
+                    First of all, program inside <b>app.start_postgresql_ngrok.StartNGROK.register_webhook</b> automatic set
+                    Webhook to TelegramBot api (if you use Auto Start) with your NGROK url and register it.
+                    Program send JSON to url: <b>https://api.telegram.org/[BOT TOKEN]/setWebhook</b>
+                    The request body for the <strong>setWebhook</strong> method in <strong>JSON</strong> format is as
+                    follows:
+                    <br>
+                    <br>
+                    <br>
+                <ul class="list_desc">
+                    <li>
+                                <pre>
+                                    {
+                                    "url": "[YOUR NGROK URL]"
+                                    }
+                                </pre>
+                    </li>
+                </ul>
+                <br>
+                <br>
+                <br>
+
+                And after that when "User" request for package tracking program used app.novaposhta.NovaPoshta method
+                "get_status", which send request to method <strong>getStatusDocuments</strong>, and program have
+                response with package tracking information.
+                The request body for the <strong>getStatusDocuments</strong> method in <strong>JSON</strong> format is
+                as follows:
+                <br>
+                <br>
+                <br>
+                <ul class="list_desc">
+                    <li>
+                            <pre>
+                                {
+                                    "apiKey": "[YOUR KEY]",
+                                    "modelName": "TrackingDocument",
+                                    "calledMethod": "getStatusDocuments",
+                                    "methodProperties": {
+                                        "Documents" : [
+                                            {
+                                                "DocumentNumber":"20400048799000",
+                                                "Phone":"380600000000"
+                                            }
+                                        ,
+                                            {
+                                                "DocumentNumber":"20400048799001",
+                                                "Phone":"380600000000"
+                                            }
+                                        ]
+                                    }
+                                }
+                            </pre>
+                    </li>
+                </ul>
+                <br>
+                <br>
+                <br>
+            </section>
+
+            <section id="functions">
+
+                <div class="page-header">
+                    <h1>Functions of Telegram Bot</h1>
+                </div>
+                <p>All the functionality of the telegram bot and its capabilities are in the file <b>handler.py</b></p>
+
+                <h3>Class User</h3>
+                <ul class="list_with_desc list_with_desc2">
+                    <li><a href="#authentication"> authentication</a></li>
+                    <li><a href="#register_t_bot_user_id"> register_t_bot_user_id</a></li>
+                </ul>
+                <h3>Class TelegramHandler</h3>
+                <ul class="list_with_desc list_with_desc2">
+                    <li><a href="#send_markup">>send_markup</a></li>
+                    <li><a href="#send_message">send_message</a></li>
+                    <li><a href="#get_data_for_send_contact">get_data_for_send_contact</a></li>
+                    <li><a href="#send_contact">send_contact</a></li>
+                    <li><a href="#send_start_massage">send_start_massage</a></li>
+                    <li><a href="#to_main_page">to_main_page</a></li>
+                </ul>
+                <h3>Class MessageHandler</h3>
+                <ul class="list_with_desc list_with_desc2">
+                    <li><a href="#message_handle">handle</a></li>
+                </ul>
+                <h3>Class CallbackHandler</h3>
+                <ul class="list_with_desc list_with_desc2">
+                    <li><a href="#callback_handle">handle</a></li>
+                </ul>
+
+                <section id="authentication">
+                    <h3 style="text-align: center"><b>Class User</b></h3>
+                    <h3><b>authentification</b></h3>
+                    <ul class="list_desc">
+                        <h5>
+                            <strong>Function of authentication user </strong> inside of DataBase.
+                            This code is executed after receiving the User's phone number, if there is no user,
+                            the MessageHandler class initialization code will be executed, and the user will
+                            receive a notification with a request to register on the site:  <a
+                            href="https://github.com/Nikitatsivinsky/Nike_shop_Django">Pet Project - Nike Shop
+                        Django</a>.
+                        </h5>
+                    </ul>
+                </section>
+
+                <section id="register_t_bot_user_id">
+                    <h3><b>register_t_bot_user_id</b></h3>
+                    <ul class="list_desc">
+                        <h5>
+                            <strong>Function of registration User - <b>user_chat_id</b> </strong>
+                            The <b>user_chat_id</b> variable is the user's chat id. Thanks to this variable,
+                            the Bot understands what chat it is. The bot enters the <b>user_chat_id</b> into
+                            the Database and uses it to identify the User.
+                        </h5>
+                        <br>
+                        <br>
+                        <div style="text-align: center;">
+                            <div>
+                                <i class="fa fa-warning" style="font-size: 40px"></i>
+                                <br><strong>If the variable is not entered into the bot for some reason,
+                                the bot will always ask the user for a phone number.</strong>
+                            </div>
+                        </div>
+                    </ul>
+                </section>
+
+                <section id="send_markup">
+                    <h3 style="text-align: center"><b>Class TelegramHandler</b></h3>
+                    <h3><b>send_markup</b></h3>
+                    <ul class="list_desc">
+                        <h5>
+                            <strong>Function send_markup </strong> allows you to send custom markup for user.
+                        </h5>
+                    </ul>
+                </section>
+
+                <section id="send_message">
+                    <h3><b>send_message</b></h3>
+                    <ul class="list_desc">
+                        <h5>
+                            <strong>Function send_message </strong> allows you to send a custom message for user.
+                        </h5>
+                    </ul>
+                </section>
+
+                <section id="get_data_for_send_contact">
+                    <h3><b>get_data_for_send_contact</b></h3>
+                    <ul class="list_desc">
+                        <h5>
+                            <strong>Function get_data_for_send_contact </strong> returns a markup with a
+                            request to send a phone number to the bot.
+                        </h5>
+                    </ul>
+                </section>
+
+                <section id="send_contact">
+                    <h3><b>send_contact</b></h3>
+                    <ul class="list_desc">
+                        <h5>
+                            <strong>Function send_contact </strong> sends a message to the user
+                            asking them to send a phone number to the bot using function get_data_for_send_contact
+                        </h5>
+                    </ul>
+                </section>
+
+                <section id="send_start_massage">
+                    <h3><b>send_start_massage</b></h3>
+                    <ul class="list_desc">
+                        <h5>
+                            <strong>Function send_start_massage </strong> sends a start markup message with a
+                            choice of further actions when user authorized.
+                        </h5>
+                    </ul>
+                </section>
+
+                <section id="to_main_page">
+                    <h3><b>to_main_page</b></h3>
+                    <ul class="list_desc">
+                        <h5>
+                            <strong>Function to_main_page </strong> used to redirect on the main route.
+                        </h5>
+                    </ul>
+                </section>
+
+                <section id="message_handle">
+                    <h3 style="text-align: center"><b>Class MessageHandler</b></h3>
+                    <h3><b>handle</b></h3>
+                    <ul class="list_desc">
+                        <h5>
+                            <strong>Function handle in MessageHandler</strong> used when the user launched the bot for
+                            the first time.
+                            Telegram automatically sends the message <b>'/start'</b> which is processed in this function.
+                        </h5>
+                    </ul>
+                </section>
+
+                <section id="callback_handle">
+                    <h3 style="text-align: center"><b>Class CallbackHandler</b></h3>
+                    <h3><b>handle</b></h3>
+                    <ul class="list_desc">
+                        <h5>
+                            <strong>Function handle in CallbackHandler</strong> is responsible for processing the
+                            callback data and performing the corresponding actions based on the data received.
+                            It follows a pattern-matching approach to determine the action to be taken.
+                            <br>When the callback data matches a specific pattern, the method executes the associated
+                            logic. Here are the key actions performed:
+                        </h5>
+
+                        <ul class="list_with_desc list_with_desc2">
+                            <h3><b>1 Route Matching:</b></h3>
+                            <li>The method matches the callback data with the pattern <b>{'route': url}</b>.</li>
+                            <li>If a match is found, it further matches the <b>url</b> to perform specific actions.</li>
+                        </ul>
+
+                        <ul class="list_with_desc list_with_desc2">
+                            <h3><b>2 Processing '/orders' Route:</b></h3>
+                            <li>If the <b>url</b> is <b>/orders</b>, the method checks if the user exists in the
+                                database.
+                            </li>
+                            <li>If the user exists, it retrieves the user's orders from the database.</li>
+                            <li>It generates an inline keyboard for pagination and displays the orders to the user in
+                                pages.
+                            </li>
+                            <li>If there are no orders available, it sends a message indicating the absence of orders.
+                            </li>
+                            <li>The method also provides navigation options to view the next or previous page of
+                                orders.
+                            </li>
+                        </ul>
+
+                        <ul class="list_with_desc list_with_desc2">
+                            <h3><b>3 Processing '/site' Route:</b></h3>
+                            <li>If the <b>url</b> is <b>/site</b>, the method sends a message containing a link to a
+                                specific website.
+                            </li>
+                        </ul>
+
+                        <ul class="list_with_desc list_with_desc2">
+                            <h3><b>4 Processing '/main' Route:</b></h3>
+                            <li>If the <b>url</b> is <b>/main</b>, the method sends a start message to the user.</li>
+                        </ul>
+
+                        <ul class="list_with_desc list_with_desc2">
+                            <h3><b>5 Processing Order ID:</b></h3>
+                            <li>If the callback data matches <b>{'order_id': order_id}</b>, the method retrieves the
+                                corresponding order based on the <b>order_id</b>.
+                            </li>
+                            <li>It generates an inline keyboard with options to track the shipment or go back to the
+                                orders route.
+                            </li>
+                        </ul>
+
+                        <ul class="list_with_desc list_with_desc2">
+                            <h3><b>6 Processing Tracking Data:</b></h3>
+                            <li>If the callback data matches <b>{'tracking': ttn}</b>, the method utilizes an external
+                                API to retrieve the status of the shipment based on the tracking number <b>(ttn)</b>.
+                            </li>
+                            <li>If tracking is successful, it constructs a response message containing details about the
+                                shipment and sends it to the user.
+                            </li>
+                            <li>If there is an error during tracking, it sends an error message to the user.</li>
+                        </ul>
+                        <h5>
+                            The <strong>handle()</strong> method serves as the central point for processing callback
+                            data and executing the appropriate actions based on the matched patterns.
+                        </h5>
+                    </ul>
+                </section>
+                <br>
+                <br>
+                <br>
+            </section>
+
+            <section id="database">
+                <div class="page-header">
+                    <h1>Data Base</h1>
+                </div>
+                <p>I use Data Base structure from my <a
+                            href="https://github.com/Nikitatsivinsky/Nike_shop_Django">Pet Project - Nike Shop
+                        Django</a> and add <b>telegram_id</b> for table <b>Profile</b>,</p>
+                <p><b>telegram_id</b> needs for save <b>chat_id</b> for user and authorized him.
+                </p>
+                <br>
+                <p>I used <b>Flask</b> with <b>SQLAlchemy</b> to create my models in file app.models and Postgres Server like Database Management System.</p>
+                <br>
+                <p>Relational Schema:</p>
+                <br>
+                <embed src="pdf/nike_shop-ER.pdf" width="1000" height="600" />
+                <br>
+                <br>
+                <br>
+
+            </section>
+
+            <section id="sources">
+                <div class="page-header">
+                    <h1>Sources</h1>
+                </div>
+
+                <h3>Project Сomponents</h3>
+                <ul class="list_with_desc list_with_desc2">
+                    <li><b>Python 3.10</b> (<a href="https://docs.python.org/3.10/" target="_blank">docs.python.org</a>)
+                    </li>
+                    <li><b>Flask 2.2.3</b> (<a href="https://flask.palletsprojects.com/en/2.2.x/"
+                                               target="_blank">flask.palletsprojects.com</a>)
+                    </li>
+                    <li><b>NGROK</b> (<a href="https://ngrok.com/docs/" target="_blank">ngrok.com</a>)
+                    </li>
+                </ul>
+                <h3>API</h3>
+                <li><b>Nova Poshta API v.2</b> (<a href="https://devcenter.novaposhta.ua/" target="_blank">devcenter.novaposhta.ua</a>)
+                </li>
+                <li><b>Telegram Bot API</b> (<a href="https://core.telegram.org/" target="_blank">core.telegram.org</a>)
+                </li>
+                <h3>Data Base</h3>
+                <li><b>PostgreSQL 15</b> (<a href="https://www.postgresql.org/docs/current/index.html" target="_blank">www.postgresql.org</a>)
+                </li>
+                <li><b>Flask SQLAlchemy 3.0.3</b> (<a href="https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/"
+                                                      target="_blank">flask-sqlalchemy.palletsprojects.com</a>)
+                </li>
+                <li><b>SQLAlchemy 2.0.9</b> (<a href="https://docs.sqlalchemy.org/en/20/" target="_blank">docs.sqlalchemy.org</a>)
+                </li>
+            </section>
+
+            <section id="end">
+                <div class="page-header">
+                    <h1>In the End!</h1>
+                </div>
+
+                <p>
+                    In conclusion, this documentation provides a comprehensive overview of the Telegram bot.
+                    <br>Through the use of Flask, a lightweight and versatile web framework, and Flask-SQLAlchemy,
+                    a powerful extension for integrating an SQL database with Flask applications, we have created
+                    a seamless and efficient user experience.
+                    <br>By following this documentation, you have learned how to set up the necessary environment,
+                    configure the bot settings, implement commands and callbacks, handle user interactions, and
+                    leverage the database capabilities for storing and retrieving data.
+                    <br>Remember, this is just the beginning of what you can achieve with this Telegram bot.
+                    Feel free to explore the possibilities and customize it according to your needs. Experiment
+                    with additional features, integrate external APIs, and create unique functionalities that will
+                    make your bot stand out.
+                    <br>Thank you for choosing this documentation as your guide. To further expand your knowledge
+                    and discover more exciting projects, be sure to check out my GitHub repository.
+                    There, you'll find wealth of interesting resources and open-source projects to explore.
+                    <br>
+                    <br>Happy coding and best of luck with your Telegram bot journey!
+                    <br>
+                    <br>Check out my GitHub to see another project:&nbsp;&nbsp;
+                        <a href="https://github.com/Nikitatsivinsky" class="icon-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    <br>Or check out my GitHub Pages to see my CV:&nbsp;&nbsp;
+                        <a href="https://nikitatsivinsky.github.io/" class="icon-link">
+                            <i class="fa fa-rocket"></i>
+                        </a>
+
+            </section>
+        </div>
+    </div>
+</div>
+
+ <footer class="footer">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+
+                <p>If you have any questions about theme please feel free to email me at <a
+                        href="mailto:nikitatsivinsky@gmail.com">nikitatsivinsky@gmail.com</a>.</p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap-transition.js"></script>
+<script src="assets/js/bootstrap-alert.js"></script>
+<script src="assets/js/bootstrap-modal.js"></script>
+<script src="assets/js/bootstrap-dropdown.js"></script>
+<script src="assets/js/bootstrap-scrollspy.js"></script>
+<script src="assets/js/bootstrap-tab.js"></script>
+<script src="assets/js/bootstrap-tooltip.js"></script>
+<script src="assets/js/bootstrap-popover.js"></script>
+<script src="assets/js/bootstrap-button.js"></script>
+<script src="assets/js/bootstrap-collapse.js"></script>
+<script src="assets/js/bootstrap-carousel.js"></script>
+<script src="assets/js/bootstrap-typeahead.js"></script>
+<script src="assets/js/bootstrap-affix.js"></script>
+<script src="assets/js/application.js"></script>
 </body>
-
 </html>
