@@ -85,11 +85,11 @@
                 </div>
                 <ul class="list_desc">
                     <li>
-                        1) Create you own <b>.env</b> file.
+                        <h4>1) Create you own <b>.env</b> file.</h4>
                     </li>
                     <li>
                         You need to create your environment variables. In file <b>.env.template</b> you can see example of your
-                        <b>.env</b> file:
+                        <b>.env</b> file:<br><br>
                         <br> #FLASK
                         <br> SECRET_KEY - your secret key of Flask application.
                         <br> DEBUG - Bool value of Flask application.
@@ -120,28 +120,29 @@
                         <br>
                     </li>
                     <li>
-                        2) Install and set up a server Postgres
+                        <h4>2) Install server Postgres</h4>
                     </li>
                     <li>
                         For Linux:
                         <pre>    sudo apt update
-                                <br>    sudo apt upgrade
-                                <br>    sudo apt install postgresql
-                            </pre>
-                        to check your server use:
-                        <pre>    sudo service postgresql status </pre>
-                        <br>For Mac:
+                        <br>    sudo apt upgrade
+                        <br>    sudo apt install postgresql
+                        </pre>
+                        <br><br>
+                        to check your server use:<br><br>
+                        <pre>    sudo service postgresql status </pre><br><br>
+                        <br>For Mac:<br><br>
                         <br>1) <a href="https://www.postgresql.org/download/macosx/">Visit the PostgreSQL downloads
-                        page</a>
-                        <br>2) Download and open the downloaded package (.dmg) file.
+                        page</a><br><br>
+                        <br>2) Download and open the downloaded package (.dmg) file.<br><br>
                         <br>3) Follow the on-screen instructions to run the installer and complete the installation
-                        process.
-                        <br>to check your server use:
+                        process.<br><br>
+                        <br>to check your server use:<br><br>
                         <pre>    psql --version </pre>
-                        <br>For Windows:
+                        <br>For Windows:<br><br>
                         <br>1) <a href="https://www.postgresql.org/download/windows/">Visit the PostgreSQL downloads
-                        page</a>
-                        <br>2) Download and open the downloaded installer (.exe) file.
+                        page</a><br><br>
+                        <br>2) Download and open the downloaded installer (.exe) file.<br><br>
                         <br>3) Follow the on-screen instructions to run the installer and complete the installation
                         process. Make sure to remember the password you set for the "postgres" user during the
                         installation.
@@ -160,7 +161,42 @@
                         <br>
                     </li>
                     <li>
-                        3) Install NGROK
+                        <h4>3) Set up server Postgres</h4>
+                    </li>
+                    <li>
+                        1) Open a command prompt or terminal and log in as a user with superuser privileges (such as a root user or a user with sudo privileges).<br>
+                        Run the psql command to enter an interactive PostgreSQL shell:<br><br>
+                        <pre>    sudo -u postgres psql</pre>
+                        2)Create a new table named tgbot:<br><br>
+                        <pre>    CREATE DATABASE tgbot;</pre>
+                        3)Create a new user with the CREATE USER command:<br><br>
+                        <pre>    CREATE USER "user" WITH PASSWORD "user";</pre>
+                        4)Assign the required privileges to the user. For example, to give it full rights to all databases, you can run the following command:<br><br>
+                        <pre>    GRANT ALL PRIVILEGES ON DATABASE tgbot TO "user";</pre>
+                        5)Connect to the tgbot database:<br><br>
+                        <pre>    \c tgbot</pre>
+                        6)Activate the uuid-ossp extension with the following command:<br><br>
+                        <pre>    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";</pre>
+                        7)Exit the interactive PostgreSQL shell by typing <b>\q</b> or pressing <b>Ctrl+D</b>.<br><br>
+                        <pre>    \q</pre>
+                    </li>
+                    <li>
+                        <h4>4) Add test values in the database (possible via Pycharm or DataGrib)</h4>
+                    </li>
+                    <li>
+                        <div style="text-align: center; padding: 25px;"
+    >
+                                <b>Connect via: postgresql://user:user@localhost:5432/tgbot</b>
+                        </div>
+
+                        1) Add the user entity to the profile table (leave telegram_id empty, it will be filled in automatically) <br>
+                        specify the phone number that will connect to the Telegram bot.<br><br>
+                        2) Add to the order table an order with a real TTN of Nova Poshta for tests.
+                        <br>
+                        <br>
+                    </li>
+                    <li>
+                    5) Install NGROK
                     </li>
                     <li>
                         For all OS - on <a href="https://ngrok.com/download">Web Site</a> - download and install NGROK.
@@ -169,7 +205,7 @@
                         <br>
                     </li>
                     <li>
-                        4) Create Python Virtual Environment and install requirements.txt
+                        6) Create Python Virtual Environment and install requirements.txt
                     </li>
                     <li>
                         <pre>    pip install -r requirements.txt</pre>
@@ -178,7 +214,7 @@
                         <br>
                     </li>
                     <li>
-                        5) Run Flask Web application
+                        7) Run Flask Web application
                     </li>
                     <li>
                         <pre>    python run.py</pre>
