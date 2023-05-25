@@ -61,7 +61,7 @@
                 and the school <a href="https://robotdreams.cc/">Robot_Dreams</a> that gave impetus to become a switcher
                 in IT industry.
 
-                <p> Telegram Bot is written using <b>Flask Application, NGROK</b>, <b>Postgresql</b> and <b>NovaPoshta Api</b>.
+                <p> Telegram Bot is written using <b>Flask Application, NGROK</b>, <b>Postgres</b> and <b>NovaPoshta Api</b>.
                     <br>The code also contains AutoStart for a quick start of the Web application. The application uses
                     the model view controller structure and OOP principles.</p>
                 <div style="text-align: center;">
@@ -85,7 +85,7 @@
                 </div>
                 <ul class="list_desc">
                     <li>
-                        <h4>1) Create you own <b>.env</b> file.</h4>
+                        <h4><b>1) Create you own environment file.</b></h4>
                     </li>
                     <li>
                         You need to create your environment variables. In file <b>.env.template</b> you can see example of your
@@ -120,7 +120,7 @@
                         <br>
                     </li>
                     <li>
-                        <h4>2) Install server Postgres</h4>
+                        <h4><b>2) Install server Postgres</b></h4>
                     </li>
                     <li>
                         For Linux:
@@ -132,7 +132,7 @@
                         to check your server use:<br><br>
                         <pre>    sudo service postgresql status </pre><br><br>
                         <br>For Mac:<br><br>
-                        <br>1) <a href="https://www.postgresql.org/download/macosx/">Visit the PostgreSQL downloads
+                        <br>1) <a href="https://www.postgresql.org/download/macosx/">Visit the Postgres downloads
                         page</a><br><br>
                         <br>2) Download and open the downloaded package (.dmg) file.<br><br>
                         <br>3) Follow the on-screen instructions to run the installer and complete the installation
@@ -140,7 +140,7 @@
                         <br>to check your server use:<br><br>
                         <pre>    psql --version </pre>
                         <br>For Windows:<br><br>
-                        <br>1) <a href="https://www.postgresql.org/download/windows/">Visit the PostgreSQL downloads
+                        <br>1) <a href="https://www.postgresql.org/download/windows/">Visit the Postgres downloads
                         page</a><br><br>
                         <br>2) Download and open the downloaded installer (.exe) file.<br><br>
                         <br>3) Follow the on-screen instructions to run the installer and complete the installation
@@ -152,7 +152,7 @@
                         <div style="text-align: center;">
                             <div>
                                 <i class="fa fa-warning" style="font-size: 40px"></i>
-                                <br><strong>You can use Docker container instead installing Postgresql on your
+                                <br><strong>You can use Docker container instead installing Postgres on your
                                 OS.</strong>
                             </div>
                         </div>
@@ -161,11 +161,11 @@
                         <br>
                     </li>
                     <li>
-                        <h4>3) Set up server Postgres</h4>
+                        <h4><b>3) Set up server Postgres</b></h4>
                     </li>
                     <li>
                         1) Open a command prompt or terminal and log in as a user with superuser privileges (such as a root user or a user with sudo privileges).<br>
-                        Run the psql command to enter an interactive PostgreSQL shell:<br><br>
+                        Run the psql command to enter an interactive Postgres shell:<br><br>
                         <pre>    sudo -u postgres psql</pre>
                         2)Create a new table named tgbot:<br><br>
                         <pre>    CREATE DATABASE tgbot;</pre>
@@ -177,18 +177,19 @@
                         <pre>    \c tgbot</pre>
                         6)Activate the uuid-ossp extension with the following command:<br><br>
                         <pre>    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";</pre>
-                        7)Exit the interactive PostgreSQL shell by typing <b>\q</b> or pressing <b>Ctrl+D</b>.<br><br>
+                        7)Exit the interactive Postgres shell by typing <b>\q</b> or pressing <b>Ctrl+D</b>.<br><br>
                         <pre>    \q</pre>
                     </li>
                     <li>
-                        <h4>4) Add test values in the database (possible via Pycharm or DataGrib)</h4>
+                        <h4><b>4) Add test values in the database (possible via
+                            <a href="https://www.jetbrains.com/pycharm/">PyCharm</a> or
+                            <a href="https://www.jetbrains.com/datagrip/">DataGrid</a>)
+                        </b></h4>
                     </li>
                     <li>
-                        <div style="text-align: center; padding: 25px;"
-    >
-                                <b>Connect via: postgresql://user:user@localhost:5432/tgbot</b>
+                        <div style="text-align: center; padding: 25px;">
+                                <b>Connect via: <pre>postgresql://user:user@localhost:5432/tgbot</pre></b>
                         </div>
-
                         1) Add the user entity to the profile table (leave telegram_id empty, it will be filled in automatically) <br>
                         specify the phone number that will connect to the Telegram bot.<br><br>
                         2) Add to the order table an order with a real TTN of Nova Poshta for tests.
@@ -196,7 +197,7 @@
                         <br>
                     </li>
                     <li>
-                    5) Install NGROK
+                        <b>5) Install NGROK</b>
                     </li>
                     <li>
                         For all OS - on <a href="https://ngrok.com/download">Web Site</a> - download and install NGROK.
@@ -205,7 +206,7 @@
                         <br>
                     </li>
                     <li>
-                        6) Create Python Virtual Environment and install requirements.txt
+                        <b>6) Create Python Virtual Environment and install requirements.txt</b>
                     </li>
                     <li>
                         <pre>    pip install -r requirements.txt</pre>
@@ -214,7 +215,7 @@
                         <br>
                     </li>
                     <li>
-                        7) Run Flask Web application
+                        <b>7) Run Flask Web application</b>
                     </li>
                     <li>
                         <pre>    python run.py</pre>
